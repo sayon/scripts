@@ -3,9 +3,8 @@ query="$1"
 doc_dir=~/docs
 for d in $(ls "$doc_dir" )
 do
-    for f in $(ls -1 "$d" | grep "$query")
+    for f in $(ls -1 "$doc_dir/$d" | grep "$query")
     do
-        echo "Found:" "$f"
         filename="$doc_dir/$d/$f"
         echo $filename
         o "$filename"
