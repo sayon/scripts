@@ -1,0 +1,2 @@
+#!/bin/bash
+tmux a -t minic || { cd ~/repos/mini-c/coq ; tmux new-session -s minic;  }
