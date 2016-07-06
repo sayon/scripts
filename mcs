@@ -1,0 +1,18 @@
+#!/bin/bash
+cd ~/repos/mini-c/bsp_pred
+
+sname="notebook"
+if tmux list-sessions | grep "$sname.*attached" 2>&1 1>/dev/null
+then
+    sname="screen"
+    if tmux list-sessions | grep "$sname.*attached" 2>&1 1>/dev/null
+    then
+        echo "All sessions are already attached" 
+    else
+        tmux has-session -t "$sname" || tmux new-session -s "$sname" ;
+        tmux a -t "$sname" 
+    fi
+else 
+    tmux has-session -t "$sname" || tmux new-session -s "$sname" 
+    tmux a -t "$sname" 
+fi 
